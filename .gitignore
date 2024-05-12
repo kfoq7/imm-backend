@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# build
+dist
+*.log
+
+# envrioments variables
+.env
+.env.development
+.env.producion
+
+# IDE
+.vscode
+
+# scripts
+scripts
