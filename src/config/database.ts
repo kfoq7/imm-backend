@@ -1,7 +1,7 @@
 import path from 'node:path'
 import { DataSource } from 'typeorm'
 
-const pathEntites = path.join(__dirname, 'entities', '**/*.entity.{ts,js}')
+const pathEntites = path.join(__dirname, '..', 'entities', '**/*.entity.{ts,js}')
 
 export const AppDataSource = new DataSource({
   type: 'mysql',

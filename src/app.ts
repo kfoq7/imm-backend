@@ -3,7 +3,7 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import { router } from './routes'
-import { initDatabase } from './database'
+import { initDatabase } from './config/database'
 
 const PORT = process.env.PORT ?? 3000
 
