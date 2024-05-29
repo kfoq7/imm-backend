@@ -21,3 +21,9 @@ export enum ExamStatus {
   COMPLETED = 'completed',
   COMPLETED_SEND = 'completed_send'
 }
+
+export enum PatientStage {
+  FERTIlE_AGE = 'fertile_age',
+  MENOPAUSAL = 'menopausal',
+  PREBUERTAL = 'prepubertal'
+}

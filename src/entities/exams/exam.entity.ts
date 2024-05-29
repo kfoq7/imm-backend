@@ -1,7 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Assistant } from '../assistant.entity'
 import { ExamStatus, ExamType } from '../../types/enums'
-import { Procedure } from './procedure.entity'
+import { Colposcopy } from './colposcopy/colposcopy.entity'
 
 @Entity()
 export class Exam {
@@ -26,9 +26,10 @@ export class Exam {
   @JoinColumn()
   assistant: Assistant
 
-  @OneToMany(() => Procedure, procedure => procedure.exam)
-  procedures: Procedure[]
-
   @Column({ type: 'text' })
   comment: string
+
+  @OneToOne(() => Colposcopy, { nullable: true })
+  @JoinColumn()
+  colposcopy: Colposcopy
 }

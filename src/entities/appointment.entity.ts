@@ -13,7 +13,7 @@ import {
 import { Doctor } from './doctor.entity'
 import { Patient } from './patient.entity'
 import { Exam } from './exams/exam.entity'
-import { BackgroundInformation } from './backgroundInformation.entity'
+import { BackgroundInformation } from './backgroundInformation/background-information.entity'
 import { ProcedureType, Status } from '../types/enums'
 
 @Entity()
@@ -28,14 +28,14 @@ export class Appointment {
   appointmentHour: string
 
   @Column({
-    type: 'set',
+    type: 'enum',
     enum: Status,
     default: Status.PENDING
   })
   status: Status
 
   @Column({
-    type: 'set',
+    type: 'enum',
     enum: ProcedureType,
     nullable: false
   })
@@ -52,14 +52,14 @@ export class Appointment {
   @JoinColumn()
   patient: Patient
 
-  @ManyToMany(() => Exam)
+  @ManyToMany(() => Exam, { nullable: true })
   @JoinTable()
   exams: Exam[]
 
   @Column('varchar', { length: 10 })
   historyMedical: string
 
-  @OneToOne(() => BackgroundInformation)
+  @OneToOne(() => BackgroundInformation, { nullable: true })
   backgroundInformation: BackgroundInformation
 
   @CreateDateColumn()

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-export class Colposcopy {
+export class FertileAge {
   @PrimaryGeneratedColumn('increment')
   id: number
 }

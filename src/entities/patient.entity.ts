@@ -10,4 +10,13 @@ export class Patient {
 
   @Column({ nullable: false })
   lastName: string
+
+  @Column({ nullable: false, type: 'date' })
+  birthDate: 'string'
+
+  @Column({ nullable: false })
+  documentType: string
+
+  @Column({ nullable: false, length: 20 })
+  documentNumber: string
 }
