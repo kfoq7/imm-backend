@@ -1,6 +1,5 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import { PatientStage } from '../../types/enums'
-import { FertileAge } from './fertile-age.entity'
 
 @Entity()
 export class BackgroundInformation {
@@ -13,10 +12,6 @@ export class BackgroundInformation {
     nullable: false
   })
   patientStage: PatientStage
-
-  @OneToOne(() => FertileAge)
-  @JoinColumn()
-  fertileAge: FertileAge
 
   @Column({ type: 'text' })
   otherBackgroundInformation: string

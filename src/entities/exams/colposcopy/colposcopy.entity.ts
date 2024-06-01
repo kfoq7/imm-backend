@@ -1,73 +1,104 @@
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import {
-  Column,
-  Entity,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
-  OneToOne,
-  PrimaryGeneratedColumn
-} from 'typeorm'
-import { IndicationColposcopy } from './indication-colposcopy.entity'
-import { Vulva } from './vulva.entity'
-import { Vagina } from './vagina.entity'
-import { Perineo } from './perineo.entity'
-import { Tincion } from './tincion.entity'
-import { UnionEscamocolumnar } from './union-escamocolumnar.entity'
-import { ZonaTransformacion } from './zona-transformacion.entity'
-import { OtrosHallazgos } from './otros-hallazgos.entity'
-import { DiagnosticoVulva } from './diagnostico-vulva.entity'
-import { DiagnosticoCervix } from './diagnostico-cervix.entity'
-import { DiagnosticoVagina } from './diagnostico-vagina.entity'
+  INDICACIONES_COLPOSCIPIA,
+  DIAGNOSTICO_CERVIX,
+  DIAGNOSTICO_VAGINA,
+  DIAGNOSTICO_VULVA,
+  PERIODO,
+  TINCION,
+  UNION_ESCAMOCOLUMNAR,
+  VAGINA,
+  VULVA,
+  ZONA_TRANSFORMACION,
+  OTROS_HALLAZGOS
+} from '../../../lib/data'
 
 @Entity()
 export class Colposcopy {
   @PrimaryGeneratedColumn('increment')
   id: number
 
-  @ManyToMany(() => IndicationColposcopy)
-  @JoinTable()
-  indications: IndicationColposcopy[]
+  @Column({
+    type: 'set',
+    enum: INDICACIONES_COLPOSCIPIA,
+    nullable: true
+  })
+  indications: string[]
 
-  @OneToOne(() => Vulva)
-  @JoinColumn()
-  vulva: Vulva
+  @Column({
+    type: 'enum',
+    enum: VULVA,
+    nullable: true
+  })
+  vulva: string
 
-  @OneToOne(() => Vagina)
-  @JoinColumn()
-  vagina: Vagina
+  @Column({
+    type: 'enum',
+    enum: VAGINA,
+    nullable: true
+  })
+  vagina: string
 
-  @OneToOne(() => Perineo)
-  @JoinColumn()
-  perineo: Perineo
+  @Column({
+    type: 'enum',
+    enum: PERIODO,
+    nullable: true
+  })
+  perineo: string
 
-  @OneToOne(() => Tincion)
-  @JoinColumn()
-  tincion: Tincion
+  @Column({
+    type: 'enum',
+    enum: TINCION,
+    nullable: true
+  })
+  tincion: string
 
-  @OneToOne(() => UnionEscamocolumnar)
-  @JoinColumn()
-  unionEscamocolumnar: UnionEscamocolumnar
+  @Column({
+    type: 'enum',
+    enum: UNION_ESCAMOCOLUMNAR,
+    nullable: true
+  })
+  unionEscamocolumnar: string
 
-  @OneToOne(() => ZonaTransformacion)
-  @JoinColumn()
-  zonaTranformacion: ZonaTransformacion
+  @Column({
+    type: 'enum',
+    enum: ZONA_TRANSFORMACION,
+    nullable: true
+  })
+  zonaTranformacion: string
 
-  @ManyToMany(() => OtrosHallazgos)
-  @JoinTable()
-  otrosHallazgos: OtrosHallazgos
+  @Column({
+    type: 'set',
+    enum: OTROS_HALLAZGOS,
+    nullable: true
+  })
+  otrosHallazgos: string[]
 
-  @Column()
+  @Column({
+    type: 'set',
+    enum: INDICACIONES_COLPOSCIPIA,
+    nullable: true
+  })
   examAdecuado: boolean
 
-  @ManyToMany(() => DiagnosticoVulva)
-  @JoinTable()
-  diagnosticoVulva: DiagnosticoVulva
+  @Column({
+    type: 'set',
+    enum: DIAGNOSTICO_VULVA,
+    nullable: true
+  })
+  diagnosticoVulva: string[]
 
-  @ManyToMany(() => DiagnosticoCervix)
-  @JoinTable()
-  diagnosticoCervix: DiagnosticoCervix
+  @Column({
+    type: 'set',
+    enum: DIAGNOSTICO_CERVIX,
+    nullable: true
+  })
+  diagnosticoCervix: string[]
 
-  @ManyToMany(() => DiagnosticoVagina)
-  @JoinTable()
-  diagnosticoVagina: DiagnosticoVagina
+  @Column({
+    type: 'set',
+    enum: DIAGNOSTICO_VAGINA,
+    nullable: true
+  })
+  diagnosticoVagina: string[]
 }

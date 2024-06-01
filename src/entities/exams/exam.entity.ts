@@ -9,14 +9,14 @@ export class Exam {
   id: number
 
   @Column({
-    type: 'set',
+    type: 'enum',
     enum: ExamType,
     nullable: false
   })
   examType: ExamType
 
   @Column({
-    type: 'set',
+    type: 'enum',
     enum: ExamStatus,
     default: ExamStatus.PENDING
   })
@@ -29,7 +29,7 @@ export class Exam {
   @Column({ type: 'text' })
   comment: string
 
-  @OneToOne(() => Colposcopy, { nullable: true })
+  @OneToOne(() => Colposcopy, { nullable: true, cascade: true })
   @JoinColumn()
   colposcopy: Colposcopy
 }

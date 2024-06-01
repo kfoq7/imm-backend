@@ -52,7 +52,7 @@ export class Appointment {
   @JoinColumn()
   patient: Patient
 
-  @ManyToMany(() => Exam, { nullable: true })
+  @ManyToMany(() => Exam, { nullable: true, cascade: true })
   @JoinTable()
   exams: Exam[]
 
