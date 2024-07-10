@@ -33,6 +33,7 @@ export const createExamsForAppointmet = async (
   const appointmentToUpdate = await appointmentRepository.findOneBy({ id: appointmentId })
   if (!appointmentToUpdate) throw new Error('Appointmet not found')
 
+  console.log(data)
   const { examsData } = data
 
   const exams = await Promise.all(examsData.map(exam => examRepository.save(exam)))

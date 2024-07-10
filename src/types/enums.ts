@@ -10,9 +10,9 @@ export enum ProcedureType {
 }
 
 export enum ExamType {
-  COLPOSCOPY = 'Colposcopia',
-  EcoMama = 'Eco Mama',
-  EcoPelvic = 'Eco Pelvica'
+  COLPOSCOPY = 'COLPOSCOPIA',
+  ECO_MAMA = 'ECO_MAMA',
+  ECO_PELVIC = 'ECO_PELVICA'
 }
 
 export enum ExamStatus {

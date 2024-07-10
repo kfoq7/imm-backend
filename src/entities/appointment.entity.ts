@@ -4,8 +4,8 @@ import {
   Entity,
   JoinColumn,
   JoinTable,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
@@ -52,7 +52,7 @@ export class Appointment {
   @JoinColumn()
   patient: Patient
 
-  @ManyToMany(() => Exam, { nullable: true, cascade: true })
+  @OneToMany(() => Exam, exam => exam.appointment)
   @JoinTable()
   exams: Exam[]
 

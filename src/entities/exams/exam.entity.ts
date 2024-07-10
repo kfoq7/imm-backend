@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn
 import { Assistant } from '../assistant.entity'
 import { ExamStatus, ExamType } from '../../types/enums'
 import { Colposcopy } from './colposcopy/colposcopy.entity'
+import { Appointment } from '../appointment.entity'
 
 @Entity()
 export class Exam {
@@ -25,6 +26,10 @@ export class Exam {
   @ManyToOne(() => Assistant)
   @JoinColumn()
   assistant: Assistant
+
+  @ManyToOne(() => Appointment)
+  @JoinColumn()
+  appointment: Appointment
 
   @Column({ type: 'text' })
   comment: string
